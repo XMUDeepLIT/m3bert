@@ -20,19 +20,3 @@ To inspect the model structure, run:
 ```
 python tests/load_model.py
 ```
-
-## Fine-tuning
-
-To fine-tune the model, run:
-
-```
-bash train/cl_mbert.sh
-```
-
-## Evaluation
-
-To evaluate the model, run:
-
-```
-bash evaluation/evaluate.sh
-```
