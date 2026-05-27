@@ -1,0 +1,89 @@
+Metadata-Version: 2.4
+Name: sentence-transformers
+Version: 3.3.0.dev0
+Summary: State-of-the-Art Text Embeddings
+Author-email: Nils Reimers <info@nils-reimers.de>, Tom Aarsen <tom.aarsen@huggingface.co>
+Maintainer-email: Tom Aarsen <tom.aarsen@huggingface.co>
+License: Apache 2.0
+Project-URL: Homepage, https://www.SBERT.net
+Project-URL: Repository, https://github.com/UKPLab/sentence-transformers/
+Keywords: Transformer Networks,BERT,XLNet,sentence embedding,PyTorch,NLP,deep learning
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+License-File: NOTICE.txt
+Requires-Dist: transformers<5.0.0,>=4.41.0
+Requires-Dist: tqdm
+Requires-Dist: torch>=1.11.0
+Requires-Dist: scikit-learn
+Requires-Dist: scipy
+Requires-Dist: huggingface-hub>=0.20.0
+Requires-Dist: Pillow
+Provides-Extra: train
+Requires-Dist: datasets; extra == "train"
+Requires-Dist: accelerate>=0.20.3; extra == "train"
+Provides-Extra: onnx
+Requires-Dist: optimum[onnxruntime]>=1.23.1; extra == "onnx"
+Provides-Extra: onnx-gpu
+Requires-Dist: optimum[onnxruntime-gpu]>=1.23.1; extra == "onnx-gpu"
+Provides-Extra: openvino
+Requires-Dist: optimum-intel[openvino]>=1.20.0; extra == "openvino"
+Provides-Extra: dev
+Requires-Dist: datasets; extra == "dev"
+Requires-Dist: accelerate>=0.20.3; extra == "dev"
+Requires-Dist: pre-commit; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pytest-cov; extra == "dev"
+Dynamic: license-file
+
+# Code for Supplementary Material
+
+This project is developed based on [sentence-transformers](https://github.com/UKPLab/sentence-transformers).
+
+## Environment Setup
+
+```
+conda create -n emb python=3.10 -y
+source activate emb
+pip install -r requirements_emb.txt
+pip install flash-attn==2.5.5
+pip install -e .
+pip install faiss
+```
+
+## Model Architecture
+
+To inspect the model structure, run:
+
+```
+python tests/load_model.py
+```
+
+## Fine-tuning
+
+To fine-tune the model, execute:
+
+```
+bash train/cl_mbert.sh
+```
+
+## Evaluation
+
+To evaluate the model, run:
+
+```
+bash evaluation/evaluate.sh
+```
+
+## Note
+
+Due to commercial reasons, we are currently unable to provide the training data and model weights. However, the provided code can help you understand and reproduce the core methodology.
